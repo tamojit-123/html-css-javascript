@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+</head>
+
+<body>
+    <script>
+        const items = [
+
+            {
+                name: 'Bike',
+                price: 100
+            },
+            {
+                name: 'Tv',
+                price: 200
+            },
+            {
+                name: 'Album',
+                price: 10
+            },
+            {
+                name: 'Phone',
+                price: 500
+            },
+            {
+                name: 'Computer',
+                price: 1000
+            }
+        ]
+        //how to iterate every element using forech element
+        items.forEach((item) => {
+            console.log(item.name, ':', item.price);
+        })
+
+        //printing the array object
+        console.log(items);
+
+        //working with filters =>
+        const filteredItems = items.filter((item) => {
+            return item.price <= 200
+        })
+        //document.write(JSON(filteredItems)+"<br>")
+        document.write("<Br>")
+        //convert into object to string
+        document.write(JSON.stringify(filteredItems) + "<br>")
+
+        //using map function it will fetch only the names
+        //map() method to iterate over the array 
+        const itemNames = items.map((item) => {
+            return item.name
+        })
+        document.write(itemNames)
+
+        //the map() method to iterate over the array and join the values of  firstName and lastName as follows
+
+        let users = [{
+                firstName: "Susan",
+                lastName: "Steward"
+            },
+            {
+                firstName: "Daniel",
+                lastName: "Longbottom"
+            },
+            {
+                firstName: "Jacob",
+                lastName: "Black"
+            }
+        ];
+
+        //why we are using here '$' because for to execute a expression
+        let userFullnames = users.map(function (element) {
+            //this line we re concatenating  the firstname and lastname
+            //using $ expression
+            return `${element.firstName} ${element.lastName}`;
+        })
+
+        console.log(userFullnames);
+
+        //it will execute the index of every array element 
+        let arr = [2, 3, 5, 7]
+
+        arr.map(function (element, index, array) {
+            console.log(element);
+            console.log(index);
+            console.log(array);
+            return element;
+        }, 80); // 80 is initial value of the elment 
+
+        //example for find () 
+        const foundItem = items.find((item) => {
+            return item.name === 'Album'
+        })
+        console.log(foundItem)
+    </script>
+
+</body>
+
+</html>

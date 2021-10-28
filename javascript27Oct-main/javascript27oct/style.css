@@ -1,0 +1,26 @@
+div{
+    display: inline-block;
+    margin: 10px;
+}
+
+.box1{
+    background-color: lightgrey;
+    width: 300px;
+    border: 2px solid black;
+    padding: 50px;
+}
+
+.box2{
+    background-color: lightgrey;
+    width: 300px;
+    border: 2px solid black;
+    padding: 50px;
+    text-align: center;
+}
+
+.box3{
+    background-color: lightgrey;
+    width: 300px;
+    border: 2px solid black;
+    padding: 50px;
+}

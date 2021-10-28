@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lambda</title>
+</head>
+
+<body>
+    <script>
+        var hello = () => {
+            return "Hello World!";
+        }
+        console.log(hello());
+
+        var add = (val1) => {
+            console.log(val1 + 20);
+        }
+        console.log(add(3));
+
+        const names = ['ram', 'shayam', 'abhi', 'suchi'];
+
+        console.log(names.map(nam => nam.length));
+
+        console.log(names.filter(ob => ob.startsWith('r')));
+
+        console.log(names.map(ab => ab.toUpperCase()));
+
+        const vehicles = [{
+                vehicle: 'car',
+                wheels: 4
+            },
+            {
+                vehicle: 'cycle',
+                wheels: 2
+            },
+            {
+                vehicle: 'auto',
+                wheels: 3
+            },
+            {
+                vehicle: 'bike',
+                wheels: 2
+            }
+        ]
+
+        console.log(vehicles.forEach(vh => {
+            console.log(vh.vehicle, ';', vh.wheels)
+        }));
+        // console.log(vehicles);
+    </script>
+</body>
+
+</html>

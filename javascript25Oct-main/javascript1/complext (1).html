@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <script>
+        let prod = [
+
+            {
+                pid: 100,
+                pname: "pen"
+            },
+            {
+                pid: 101,
+                pname: "pencil",
+                //author is proerpty for prod . and autnme is property for author object 
+                author: [{
+                    auid: 1,
+
+                    autname: "james"
+                }]
+            }
+
+        ];
+
+
+        //document.write(prod[0].pid+"\t"+prod[0].pname+"<br>");
+        document.write(prod[1].author[0].autname);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<html>
+
+<body>
+    <script>
+        let array = {
+
+            drive() {
+                return "Adding array ";
+            }
+        }
+
+        let sample = {
+
+            sam() {
+                return " it is object";
+            }
+        }
+
+
+        var faculty = {
+            fid: 100,
+            fname: "rameshwari",
+
+            display() {
+                return this.fid + "\t" + this.fname;
+            }
+
+
+        }
+
+
+        console.log(faculty.display());
+
+
+
+        var result = Object.setPrototypeOf(sample, array);
+
+        //Object.setPrototypeOf(faculty,null);
+
+        console.dir(result);
+
+        console.log(sample.drive());
+        //  console.log(array.drive());
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<html>
+
+<body>
+<script>
+ //using object literals
+ book = 
+    {
+        bid: 100,
+        bname : "java",
+        bprice:  230
+
+    }
+    document.write("Book Id ="+book.bid);
+    document.write("Book Name ="+book.bname);
+    document.write("Book Price ="+book.bprice);
+
+    //using and instance of object using new keyword
+    document.write("<br><br>");
+
+    var student = new Object();
+    student.sid=100;
+    student.sname="rohan";
+    student.marks=23.45;
+    document.write(student.sid+"\t"+student.sname+"\t"+student.marks);
+//using an object constructor
+
+document.write("<Br><br>");
+function customer(cid, cname , mobileno)
+{
+    this.cid=cid;
+    this.cname=cname;
+    this.mobileno=mobileno;
+}
+
+cust = new customer(100,"rameshwari",783458);
+document.write(cust.cid+"\t"+cust.cname+"\t"+cust.mobileno);
+document.write(cust);
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p1">//0
+        <b> This is paragrph 1</b>
+    </p>
+    <p id="p1">//1
+        <b> This is paragrph 2</b>
+    </p>
+    <p id="p1">//2
+        <b> This is paragrph 3</b>
+    </p>
+    <div>
+        <img id="x" src="./mypic.png" alt="Pic path is not set" />
+
+    </div>
+    <script src="./dosearch.js"></script>
+    <script>
+        document.write("============================<br>");
+        let paragraphs = document.body.getElementsByTagName("p");
+        document.body.insertBefore(paragraphs[2], paragraphs[1]);
+    </script>
+</body>
+
+</html>

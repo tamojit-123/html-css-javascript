@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        //arrow function usage similar like in java lambda expression
+        //()-> An arrow function with zero parameters requires parentheses.
+        const ex = () => "HI welcome to java script arrow functions";
+        console.log(ex())
+
+        //An arrow function with one parameter does not require parentheses. In other words, parentheses are optional.
+        const addition = num => num + 2
+        console.log(addition(10))
+
+        //So we can add parentheses to the above example and the arrow function still works.
+        const sum = (sum) => sum + 2
+        console.log(sum(10))
+
+        //An arrow function with multiple parameters requires parentheses.
+
+        const addNums = (num1, num2) => num1 + num2;
+        console.log(addNums(1, 2));
+
+        //Arrow functions also support rest parameters this features require parentheses.
+        //This is an example of an arrow function with a rest parameter
+        const nums = (first, ...rest) => rest;
+        console.log(nums(1, 2, 3, 4));
+        console.log(nums(2, 3, 4, 5, 6, 7, 9, 10))
+
+        //example of destructuring.
+        const location1 = {
+            country: "Greece",
+            city: "Athens"
+        };
+
+        const travel = ({
+            city
+        }) => city;
+
+        console.log(travel(location1));
+
+
+        //example of return statement using arrow function
+
+        const addTwo = a => {
+            const total = a + 2;
+            return total;
+        }
+        console.log(addTwo(3))
+
+        //example with return 
+        function sum1(a, b) {
+            return a + b
+        }
+
+
+        //the above example we can write  using arrow expression
+
+        let sum3 = (a, b) => {
+            return a + b
+        }
+        console.log(sum3(2, 3))
+
+        //or 
+        let sum2 = (a, b) => a + b
+        console.log(sum2(2, 3))
+
+        function ispositive(numer) {
+            return number >= 0
+        }
+
+        let ispositive2 = number => number >= 0
+        console.log(ispositive2())
+
+        function randomnumber2() {
+            return Math.random
+        }
+        console.log(randomnumber2())
+        let randomnumber3 = () => Math.random
+        console.log(randomnumber3())
+    </script>
+
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>

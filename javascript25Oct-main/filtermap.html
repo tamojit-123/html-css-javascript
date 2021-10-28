@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let pricearr = [20, 50, 40, 60, 100];
+
+        premium = pricearr.filter(item => {
+            return item > 50
+        });
+        console.log(premium);
+
+        let price = premium.map(prod => {
+            return (prod * 0.85)
+        })
+        console.log(price);
+
+        let productList = pricearr.map(prodprice => (prodprice * 0.85).filter(item => item > 50))
+        console.log(productList);
+    </script>
+</body>
+
+</html>
