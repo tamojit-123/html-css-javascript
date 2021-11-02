@@ -1,0 +1,40 @@
+1)Minification
+2)Bundling:
+we are bundling/grouping  the multiple files
+script.js
+a.js
+b.js
+c.js
+zip: multiple files and folders , we are compressing them in 1 files
+webpack :
+1)webpack installation : npm install --save-dev webpack
+2)webpack cli:npm install --save-dev -webpack-cli
+3)clean webpack plugin : npm install --save-dev clean-webpack-plugin
+4)html webpack plaugin : npm install --save-dev html-webpack-plugin
+===============================================
+2)Make some changes in package.json files
+"main": "index.js",
+"build": "webpack --config=webpack.config.js"
+2) Create a webpack.config.js
+3)
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+module.exports = {
+  mode: 'production',
+  devtool: 'source-map',
+  entry: './js/index.esm.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+   plugins: [
+        new CleanWebpackPlugin(),
+      ]
+    }
+4) Execute command from terminal :
+    npm run build
+
+https://www.sitepoint.com/webpack-beginner-guide/
+
+https://tutorialzine.com/2017/04/learn-webpack-in-15-minutes
