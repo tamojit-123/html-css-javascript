@@ -1,0 +1,44 @@
+To create a Bundle.js File 
+=====================
+1) Install nodejs 
+2) start vscode (if you are opening before install of nodejs then restart vscode)
+3) to check node is install or not 
+go to cmd prompt -> type npm -v
+or node -v
+4) go to vscode -> create your own directory 
+we need to create package.json file mandtory for npm functionality .
+to create package.json file go to terminal window
+nd type -> npm init
+it will ask some options pls do /press enter / enter 
+and finally yes word
+5) once package.json file is created we can see in vscode in the folder which we created .json file
+6) next step to work with webpack we need to install webpack 
+npm install webpack --save-dev
+type in terminal window
+7)need to add about webpack in package.json file 
+  "scripts": {
+        "build": "webpack ",
+        "watch": "webpack --watch"
+    },
+
+10) create one file in your directory using vscode 
+webpack.config.js.
+need to write this code
+
+var path = require('path');
+
+module.exports = {
+  entry: './js/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+
+
+9) go to terminal window type
+npm run build
+
+pls refer this site
+====================
+https://tutorialzine.com/2017/04/learn-webpack-in-15-minutes
