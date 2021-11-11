@@ -1,0 +1,469 @@
+import {submitData} from "./contact_service.js";
+
+//Provide the solution code here
+let contacts = [];
+// listen to click of addContact button and add maximum of two additional inputs for inputting Contact Nos.
+window.submitContact = () => {
+    //contact object captures all the inputs provided
+    let formData = document.getElementById('contactform')
+    let contact = Object.fromEntries(new FormData(formData))
+    console.log(contact);
+    return submitData(contact);
+}
+//errors object captures all the validation errors
+let submitData = (contact) => {
+    let errors={
+        firstNameError: validateFirstName(contact.firstname),
+        lastNameError: validateLastName(contact.lastname),
+        emailError: validateEmail(contact.email),
+        homeNoError: validateHomeNo(contact.homeNo),
+        workNoError: validateWorkNo(contact.workNo),
+        birthdateError:validateBirthdate(contact.birthdate),
+        companyError:validateCompany(contact.company),
+        jobTitleError:validateJobTitle(contact.jobTitle),
+        notesError: validateNotes(contact.notes)
+    }
+    //display validation summary with error messages
+    let errorMessages = Object.values(errors).filter(e => e !== '');
+    //if no errors, push the contact to contacts array
+    if(errorMessages.length === 0){
+        contacts.push(contact);
+        return true;
+    }
+    else{
+        displayValidationSummary(errorMessages);
+        displayIndividualErrorMessages(errors);
+        return false;
+    }
+}
+//contacts can be logged on to console, or can even be updated on UI
+//function to display validation summary with error messages provided
+function displayValidationSummary(errorMessages){
+    let list = '';
+    errorMessages.map(e=>`<li>${e}</li>`).forEach(item=>{
+        list += item;
+    });
+    document.getElementsByTagName('ul')[0].innerHTML = list;
+}
+//function to display error messages alongside the input fields
+function displayIndividualErrorMessages(errorMessages){
+    document.getElementById('firstNameError').innerText = errorMessages.firstNameError;
+    document.getElementById('lastNameError').innerText = errorMessages.lastNameError;
+    document.getElementById('emailError').innerText = errorMessages.emailError;
+    document.getElementById('homeNoError').innerText = errorMessages.homeNoError;
+    document.getElementById('workNoError').innerText = errorMessages.workNoError;
+    document.getElementById('birthdateError').innerText = errorMessages.birthdateError;
+    document.getElementById('companyError').innerText = errorMessages.companyError;
+    document.getElementById('jobTitleError').innerText = errorMessages.jobTitleError;
+    document.getElementById('notesError').innerText = errorMessages.notesError;
+}
+//function to validate firstName
+const validateFirstName = (firstname)=>{
+    var letters = /^[A-Za-z]+$/;
+    if(firstname === '' || firstname === undefined || firstname === null)
+        return "firstname cannot be left blank";
+    else if(!(firstname.match(letters))){
+        return "Please enter valid name";
+    }
+    else{
+        return "";
+    }
+}
+//function to validate lastName
+const validateLastName = (lastname)=>{
+    var letters = /^[A-Za-z]+$/;
+    if(lastname === '' || lastname === undefined || lastname === null)
+        return "lastname cannot be left blank";
+    else if(!(lastname.match(letters))){
+        return "Please enter valid lastname";
+    }
+    else
+        return "";
+}
+//function to validate email
+const validateEmail = (email) => {
+    let emailError = '';
+    let validRegex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
+    if (email === '' || email === undefined || email === null)
+        emailError += "Email cannot be left blank";
+    else if (!email.match(validRegex))
+        emailError += 'Invalid Email';
+    return emailError;
+}
+//function to validate home no
+const validateHomeNo = (homeno) => {
+    let homeNoError = '';
+    //to validate following patterns of contact nos
+    //0999999999, 099-999-999, (099)-999-9999, (099)9999999, 099 999 9999, 099 999-9999, (099) 999-9999, 099.999.9999
+    let validRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (homeno === '' || homeno === undefined || homeno === null)
+        homeNoError += "ContactNo cannot be left blank";
+    else if (!homeno.match(validRegex))
+        homeNoError += 'Invalid ContactNo';
+    return homeNoError;
+}
+//function to validate work no
+const validateWorkNo = (workno) => {
+    let workNoError = '';
+    //to validate following patterns of contact nos
+    //0999999999, 099-999-999, (099)-999-9999, (099)9999999, 099 999 9999, 099 999-9999, (099) 999-9999, 099.999.9999
+    let validRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (workno === '' || workno === undefined || workno === null)
+        workNoError += "ContactNo cannot be left blank";
+    else if (!workno.match(validRegex))
+        workNoError += 'Invalid ContactNo';
+    return workNoError;
+}
+//function to validate additional contact no
+//function to validate additional contact no
+//function to validate notes
+const validateNotes = (notes)=>{
+    if(notes === '' || notes === undefined || notes === null)
+        return "Notes cannot be left blank";
+    else
+        return "";
+}
+//disable all dates for whom age is less than 18
+const validateBirthdate = (birthdate)=>{
+    var split = birthdate.split("-");
+    let year = parseInt(split[0]);
+    let month = parseInt(split[1]);
+    let day = parseInt(split[2]);
+    const presentDate = new Date();
+    console.log("day:"+day);
+    console.log("month:"+month);
+    console.log("year:"+year);
+    console.log("present year"+presentDate.getFullYear());
+    if((presentDate.getFullYear()-year)>18){
+        return "valid age"
+    }
+    else{
+        return "Invalid.Your age is less than 18"
+    }
+}
+//Validate Company
+const validateCompany = (company)=>{
+    var letters = /^[A-Za-z]+$/;
+    if(company === '' || company === undefined || company === null)
+        return "CompanyName cannot be left blank";
+    else if(!(company.match(letters))){
+        return "Please enter valid Companyname";
+    }
+    else{
+        return "";
+    }
+}
+//Validate Job Title
+const validateJobTitle = (jobTitle)=>{
+    var letters = /^[A-Za-z]+$/;
+    if(jobTitle === '' || jobTitle === undefined || jobTitle === null)
+        return "jobTitle cannot be left blank";
+    else if(!(jobTitle.match(letters))){
+        return "Please enter valid jobTitle";
+    }
+    else{
+        return "";
+    }
+}
+
+
+=============================================================================
+
+
+// Provide persistence solution code here
+
+export function submitData(contact) {
+    let xhr = new XMLHttpRequest();
+    let requestBody = contact;
+
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+            console.log("data added");
+    }
+    xhr.open("POST", "http://localhost:3000/contact", true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+
+    xhr.send(JSON.stringify(requestBody));
+
+}
+
+
+====================================================================================
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Contact Book App</title>
+</head>
+<body>
+<header>
+    <h1>My Contacts</h1>
+</header>
+<section class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h3>Add New Contact</h3>
+            <form id="contactform" action="#" onsubmit="return submitContact()">
+                <h3>Fill up Contact's Details here</h3>
+                <div id="validationSummary" class="mt-4">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control form-control-sm" name="firstname" id="firstname"
+                               placeholder="Enter Firstname">
+                        <small id="firstNameError"></small>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control form-control-sm" name="lastname" id="lastname"
+                               placeholder="Enter Lastname">
+                        <small id="lastNameError"></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="form-control form-control-sm" name="email" id="email"
+                               placeholder="Enter Email">
+                        <small id="emailError"></small>
+                    </div>
+                </div>
+                <div id="contactNos" class="row">
+                    <div class="col-md-6">
+                        <input class="form-control form-control-sm" name="homeNo" id="homeNo"
+                               placeholder="Enter Contact No - Home">
+                        <small id="homeNoError"></small>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control form-control-sm" name="workNo" id="workNo"
+                               placeholder="Enter Contact No - Work">
+                        <small id="workNoError"></small>
+                    </div>
+                </div>
+                <div>
+                    <button id="addContactNo" >+</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="birthday">Enter Birthdate</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="date" class="form-control form-control-sm" name="birthdate" id="birthdate"
+                               placeholder="Enter Birthdate">
+                        <small id="birthdateError"></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control form-control-sm" name="company" id="company"
+                               placeholder="Enter Company">
+                        <small id="companyError"></small>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control form-control-sm" name="jobTitle" id="jobTitle"
+                               placeholder="Enter Job Title">
+                        <small id="jobTitleError"></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                            <textarea class="form-control form-control-sm" rows="4" name="notes" id="notes"
+                                      placeholder="Enter Notes"></textarea>
+                        <small id="notesError"></small>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-6">
+            <div id="contact-list">
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
+
+=========================================================================================
+
+
+///Provide the solution code here
+
+let contacts = [];
+
+window.submitContact = () => {
+    //contact object captures all the inputs provided
+    let theContact = document.getElementById("contactForm");
+    let contactDetails = Object.fromEntries(new FormData(theContact));
+    return validateContact(contactDetails);
+};
+
+// listen to click of addContact button and add maximum of two additional inputs for inputting Contact Nos.
+
+const validateContact = (details) => {
+    //errors object captures all the validation errors
+    let errors = {
+        firstNameError: validateFirstName(details.firstname),
+        lastNameError: validateLastName(details.lastname),
+        emailError: validateEmail(details.email),
+        homeNoError: validateHomeNo(details.homeNo),
+        workNoError: validateWorkNo(details.workNo),
+        notesError: validateNotes(details.notes)
+    };
+    let allErrors = Object.values(errors).filter((e) => e !== "");
+    //if no errors, push the contact to contacts array
+    if (allErrors.length === 0) {
+        contacts.push(details);
+        //contacts can be logged on to console, or can even be updated on UI
+        let contactData = "";
+        for (const key in details) {
+            contactData += key + ": " + details[key] + "\n";
+        }
+        console.log(contactData);
+        //document.getElementById("contact-list").innerHTML = contactData;
+        document.write(`<pre style="font-size: 50px">${contactData}</pre>`);
+        return true;
+    } else {
+        //display validation summary with error messages
+        displayValidationSummary(allErrors);
+        displayErrorsIndividually(errors);
+        return false;
+    }
+};
+
+//function to display validation summary with error messages provided
+function displayValidationSummary(allErrors) {
+    let errorList = "";
+    allErrors
+        .map((er) => `<li>${er}</li>`)
+        .forEach((err) => {
+            errorList += err;
+        });
+    document.getElementsByTagName("ul")[0].innerHTML = errorList;
+}
+
+//function to display error messages alongside the input fields
+function displayErrorsIndividually(errors) {
+    if (errors.firstNameError !== "") {
+        document.getElementById("firstNameError").innerText = "*";
+    }
+    if (errors.lastNameError !== "") {
+        document.getElementById("lastNameError").innerText = "*";
+    }
+    if (errors.emailError !== "") {
+        document.getElementById("emailError").innerText = "*";
+    }
+    if (errors.homeNoError !== "") {
+        document.getElementById("homeNoError").innerText = "*";
+    }
+    if (errors.workNoError !== "") {
+        document.getElementById("workNoError").innerText = "*";
+    }
+    if (errors.notesError !== "") {
+        document.getElementById("notesError").innerText = "*";
+    }
+}
+
+let nameRegEx = "^[A-Za-z.]+$";
+//function to validate firstName
+const validateFirstName = (firstName) => {
+    if (firstName === "" || firstName === undefined || firstName === null) {
+        return "First Name can't be left blank";
+    }
+    if (!firstName.match(nameRegEx)) {
+        return "Invalid First Name! Should only contain alphabets and period(.)";
+    }
+    return "";
+};
+
+//function to validate lastName
+const validateLastName = (lastName) => {
+    if (lastName === "" || lastName === undefined || lastName === null) {
+        return "";
+    }
+    if (!lastName.match(nameRegEx)) {
+        return "Invalid Last Name! Should only contain alphabets and period(.)";
+    }
+    return "";
+};
+
+//function to validate email
+const validateEmail = (emailID) => {
+    let emailRegex =
+        "^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$";
+    if (emailID === "" || emailID === undefined || emailID === null) {
+        return "Email ID can't be left blank";
+    }
+    if (!emailID.match(emailRegex)) {
+        return "Invalid email format entered!";
+    }
+    return "";
+};
+
+let phoneRegex =
+    "^(\\+91)?[\\s]?[(]?[0-9]{3}[)]?[-]?[.]?[\\s]?[0-9]{3}[-]?[\\s]?[.]?[0-9]{4}$";
+//function to validate home no
+const validateHomeNo = (homeNo) => {
+    if (homeNo === "" || homeNo === undefined || homeNo === null) {
+        return "Home Number cannot be left blank!";
+    }
+    if (!homeNo.match(phoneRegex)) {
+        return "Home Phone Number Format Not Valid!";
+    }
+    return "";
+};
+
+//function to validate work no
+const validateWorkNo = (workNo) => {
+    if (workNo === "" || workNo === undefined || workNo === null) {
+        return "";
+    }
+    if (!workNo.match(phoneRegex)) {
+        return "Work Number Format Not Valid!";
+    }
+    return "";
+};
+
+//function to validate additional contact no
+const validateAddContact1 = (contactNo) => {
+    if (!contactNo.match(phoneRegex)) {
+        return "Additional Contact 1's Format Not Valid!";
+    }
+    return "";
+};
+
+//function to validate additional contact no
+const validateAddContact2 = (contactNo) => {
+    if (!contactNo.match(phoneRegex)) {
+        return "Additional Contact 2's Format Not Valid!";
+    }
+    return "";
+};
+
+//function to validate notes
+const validateNotes = (notes) => {
+    if (notes.length > 200) {
+        return "Sorry! You cannot add more than 200 characters!";
+    }
+    return "";
+};
+
+//disable all dates for whom age is less than 18
+let dateOfBirth = document.getElementById("birthdate");
+dateOfBirth !== null ? dateOfBirth.setAttribute("max", "2003-07-15") : dateOfBirth
+
+======================================================================
