@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const message=function(){
+            console.log("This mesage will come after 2 sec");
+        }
+        //Takes time in milliseconds
+        setTimeout(message,2000);
+    //Anonymous function
+    setTimeout(function(){
+        console.log("This message will come after 5 sec");
+    },5000);
+   //Callback with arrow fucntion
+   setTimeout(()=>{
+       console.log("this message should come afetr 10sec ")
+   },10000);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
