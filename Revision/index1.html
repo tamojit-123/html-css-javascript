@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const message=function()
+        {
+console.log("Msg after 5 sec");
+        }
+        const message1=function()
+        {
+console.log("Msg after 10 sec");
+        }
+        setTimeout(message,5000);
+        setTimeout(message1,10000);
+        setTimeout(function(){
+            console.log("This message comes after 1 sec")
+        },1000);
+        setTimeout(()=>{
+            console.log("This message comes after 7 sec")
+        },7000);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

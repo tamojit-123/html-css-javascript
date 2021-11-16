@@ -1,0 +1,117 @@
+HTTP Methods :
+
+1) XML HttpRequest : 
+    -In built Browser Object _Can be used to request data from server
+2)Client/server
+3)HTTP
+4)HTTP Calls
+5)AJAX
+=======================================================
+onreadystatechange :
+    -Event handler
+    -whenever the readyState attribute gets changed 
+
+readyState:
+    It is occuring when the load state of the Page gets changed
+states :
+    0 : Request has not been sent
+    1 : open state , 
+    2 : Headers ->content type-Json
+    3 : Loading 
+    4 : Fully loaded 
+
+Event Handler : 
+    It is handling the events like click event on a button  .
+    That piece of code we are going to write in this. 
+
+Event : Any action that is happening on Web page like click on button, mouseover, Key press , 
+
+onclick
+onmouseover 
+
+=================
+1)Install Json server
+2)Cretae 1 Json file db.json
+3)Design 1 HTML Page - submit button
+4)Write code in JS file 
+5)Execute json-server --watch db.json
+6)Execute HTMl Page on server 
+==========================================
+Synchronous and Asynchronous 
+
+Synchronous : Sequential Execution
+
+JS is single threaded application application.
+
+function a()
+{
+    //code snippet
+}
+function b()
+{
+    //code snippet
+}
+function c()
+{
+    //code snippet
+}
+a()
+b()
+c()
+======================
+Asynchronous: It allows the execution of multiple methods simultaneously:
+ JS : 
+ - Callbacks 
+ - Promises
+
+ Callbacks : 
+ - A callback function is a function passed as an argument to another function
+
+ function a()
+ {}
+ function b(int a, int b,callback)
+ {
+     callback()
+ }
+
+ b(10,20,a)
+Advantage : 
+1)To make application asynchronous
+2)Multitasking at same time
+3)b()->callback
+
+user is raising any event, only then callback should execute ..
+
+
+Promise : 
+
+Multiple functions are executing simultanously ..
+
+a(): Read data : time 10 - 1 day 
+b() : Result from server
+c() : Result from server
+
+- Its an onject which will return a value 
+sucess
+failure 
+
+states : 
+Pending :
+Fulfilled  : .then()
+Rejected   : .catch()
+
+axios : 
+    It is a JS Library which is used to make HTTP request 
+
+
+
+
+
+
+
+
+
+
+
+
+

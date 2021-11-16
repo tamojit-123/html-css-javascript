@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=Cann, initial-scale=1.0">
+    <title>Callbac examples</title>
+    <script>
+       function add(a,b,callback)
+       {
+           document.write(a+b);
+           callback();
+       }
+       function mul(a,b,callback)
+       {
+           document.write(a*b);
+           callback(2,3);
+       }
+      /* function display()
+       {
+           document.write("End of the program");
+       }*/
+       add(10,20,function display(){
+        document.write("End of the program");
+       })
+       mul(10,20,add)
+    </script>
+
+</head>
+
+<body>
+    
+</body>
+</html>
