@@ -1,0 +1,73 @@
+Jasmine : It is framework basically it is used for testingthe  javascrpt, angular using karma , 
+
+unittesing, bdd -> 
+
+validations -> client 
+
+www.facebook.com-> 
+
+signup , singin
+
+Name 
+Password
+confirmPwd
+mobile
+emailid 
+
+junittestcase 
+=================================
+
+class userlogin
+{
+private int userid;
+private String uname;
+//setters and  getters
+}
+
+class LoginControll
+{
+
+public String loginvalidation(String uname , int userid)
+{
+
+
+}
+
+@test
+void test()
+{
+}
+
+
+jasmine:
+================================================
+Suite:
+=============
+describe("String ",function())
+firstparameter: to represents the title of the testsuit
+second paramter: to represents function that implements the test suite 
+
+Specs
+it represents a testcase inside the testsuite . This begins a call tohte jsmine globl function . 
+
+it("String",function()):
+
+first parameter: title of thetest case
+second : function implements the test case 
+
+expect(actual , expect): 
+
+spec contains one or more expectations . Each expectation represnts an assertion 
+that can either true or false 
+
+syntax:
+
+
+describe("title suite",function()
+{
+it("title sepc",function()
+{
+
+expect(expression).matchersmethods();
+});
+});
